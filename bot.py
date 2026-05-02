@@ -363,14 +363,5 @@ if __name__ == "__main__":
     app.add_handler(CommandHandler("tg",        tg))
     app.add_handler(CommandHandler("suce",      suce))
     app.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, repondre_message))
-
-    async def main():
-        async with app:
-            await app.start()
-            await app.updater.start_polling()
-            await lire_terminal(app)  # terminal actif en parallèle
-            await app.updater.stop()
-            await app.stop()
-
-    print("Bot lancé ! Écris dans le terminal pour envoyer un message.")
-    asyncio.run(main())
+    print("Bot lancé !")
+    app.run_polling()
